@@ -39,10 +39,10 @@ const account1 = {
 // 2-account
 
 const account2 = {
-    password: "1111",
+    password: "2222",
     cardNumber: 86001401965193,
     owner: {
-        fristName: "Nuriddin",
+        fristName: "Farrux",
         lastName: "Jo'rayev"
     },
     curreny: "USD",
@@ -71,3 +71,33 @@ const account2 = {
     ]
 }
 const accounts = [account1, account2]
+
+// Elemment
+const inputLogin = document.querySelector('.login_input')
+const inputPassword = document.querySelector('.password_input')
+const btnLogin = document.querySelector('.enter')
+
+
+// Functions
+const createLogin = () => {
+    accounts.forEach(acc => {
+        acc.username = acc.owner.fristName[0].toLowerCase() + acc.owner.lastName[0].toLowerCase()
+    })
+
+}
+createLogin()
+
+// Login
+
+
+btnLogin.addEventListener('click', (e) => {
+    e.preventDefault()
+    const candidate = accounts.find(acc => acc.username === inputLogin.value)
+    if (!candidate) return console.log('login xato');
+    if (candidate.password !== inputPassword.value) return
+    console.log('hush kelibsiz')
+})
+
+
+
+
